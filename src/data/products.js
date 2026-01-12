@@ -142,7 +142,7 @@ export const products = [
     description: "Generic carrots; low environmental impact and rich in vitamin A.",
     longDescription: "Frische Karotten aus deutschem Anbau. Reich an Beta-Carotin und Vitamin A. Vielseitig verwendbar als Rohkost, zum Kochen oder für Säfte.",
     origin: "Deutschland",
-    image: "https://www.rewe.de/api/v2/images/3623755?fit=fill&w=600&h=600&bg=ffffff",
+    image: "https://img.rewe-static.de/1045111/21288882_digital-image.png",
     stock: 60
   },
   {
@@ -214,7 +214,7 @@ export const products = [
     description: "Green vegetable with low true price.",
     longDescription: "Frischer Broccoli, reich an Vitaminen und Mineralstoffen. Besonders hoher Gehalt an Vitamin C und Folsäure. Ideal zum Dämpfen, Braten oder als Rohkost.",
     origin: "Deutschland/Spanien",
-    image: "https://www.rewe.de/api/v2/images/5016460?fit=fill&w=600&h=600&bg=ffffff",
+    image: "https://img.rewe-static.de/1007433/21403678_digital-image.png",
     stock: 35
   },
   {
@@ -238,7 +238,7 @@ export const products = [
     description: "Local apple variety; fresh fruit with low externalities.",
     longDescription: "Pinova-Äpfel aus regionalem Anbau. Süß-säuerlicher Geschmack, knackig und saftig. Ideal als Snack oder zum Backen. Kurze Transportwege für maximale Frische.",
     origin: "Bodensee, Deutschland",
-    image: "https://img.rewe-static.de/2353704/2353704_digital-image.png",
+    image: "https://img.rewe-static.de/1907470/23271236_digital-image.png",
     stock: 55
   },
 
@@ -264,7 +264,7 @@ export const products = [
     description: "Conventional beef mince; animal product with high true price due to emissions.",
     longDescription: "Frisches Rinderhackfleisch aus kontrollierter Haltung. Vielseitig verwendbar für Bolognese, Burger oder Hackbraten. Der wahre Preis berücksichtigt die Umweltauswirkungen der Rindfleischproduktion.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/7978794/7978794_digital-image.png",
+    image: "https://img.rewe-static.de/7978794/32402863_digital-image.png",
     stock: 20
   },
   {
@@ -288,7 +288,7 @@ export const products = [
     description: "Beef filet steak; premium cut; high externalities.",
     longDescription: "Premium Rinderfilet, der zarteste Teil vom Rind. Perfekt zum Kurzbraten. Der wahre Preis reflektiert die hohen Umweltkosten der Rindfleischproduktion inkl. Methanemissionen und Landnutzung.",
     origin: "Argentinien",
-    image: "https://img.rewe-static.de/7623037/27403127_digital-image.png",
+    image: "https://img.rewe-static.de/8728614/37096973_digital-image.png",
     stock: 15
   },
   {
@@ -312,7 +312,7 @@ export const products = [
     description: "Lamb chops; high land-use and methane emissions.",
     longDescription: "Zarte Lammkoteletts, ideal zum Grillen oder Braten. Die Schafhaltung verursacht hohe Methanemissionen und benötigt viel Weideland, was sich im wahren Preis widerspiegelt.",
     origin: "Neuseeland",
-    image: "https://img.rewe-static.de/7617227/27401665_digital-image.png",
+    image: "https://img.rewe-static.de/8139884/31571240_digital-image.png",
     stock: 12
   },
   {
@@ -336,7 +336,7 @@ export const products = [
     description: "Standard butter; dairy product with moderate externalities.",
     longDescription: "Deutsche Markenbutter aus Kuhmilch. Der wahre Preis berücksichtigt die Umweltauswirkungen der Milchwirtschaft, einschließlich Methanemissionen und Wasserverbrauch.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/1552651/27139508_digital-image.png",
+    image: "https://img.rewe-static.de/4530594/1092510_digital-image.png",
     stock: 80
   },
   {
@@ -360,7 +360,7 @@ export const products = [
     description: "Hard Italian cheese; long maturation; animal product.",
     longDescription: "Original Parmigiano Reggiano aus Italien, mindestens 24 Monate gereift. Intensiver, würziger Geschmack. Die lange Reifezeit und Milchproduktion spiegeln sich im wahren Preis wider.",
     origin: "Italien",
-    image: "https://img.rewe-static.de/8691063/8691063_digital-image.png",
+    image: "https://img.rewe-static.de/8691063/36533483_digital-image.png",
     stock: 25
   },
   {
@@ -384,7 +384,7 @@ export const products = [
     description: "Organic salmon; high true price because of aquaculture impacts but better than conventional.",
     longDescription: "Bio-Lachsfilet aus nachhaltiger Aquakultur. Reich an Omega-3-Fettsäuren. Obwohl bio-zertifiziert, hat Lachs durch die Aquakultur einen erhöhten ökologischen Fußabdruck.",
     origin: "Norwegen",
-    image: "https://img.rewe-static.de/7621497/27402405_digital-image.png",
+    image: "https://img.rewe-static.de/8655330/33088878_digital-image.png",
     stock: 18
   },
   {
@@ -408,7 +408,7 @@ export const products = [
     description: "Prawns/shrimp; fishing/aquaculture externalities; high true price.",
     longDescription: "King Prawns, tiefgefroren. Garnelenzucht kann zur Zerstörung von Mangrovenwäldern führen und hat hohe Umweltauswirkungen, die im wahren Preis berücksichtigt werden.",
     origin: "Vietnam",
-    image: "https://img.rewe-static.de/1544476/27118430_digital-image.png",
+    image: "https://img.rewe-static.de/2565945/24710843_digital-image.png",
     stock: 22
   },
   {
@@ -432,7 +432,7 @@ export const products = [
     description: "Whole coffee beans; look for fair-trade or organic certification.",
     longDescription: "Ganze Kaffeebohnen für volles Aroma. Kaffeeanbau kann zu Entwaldung und sozialen Problemen führen. Achten Sie auf Fair-Trade oder Bio-Zertifizierung für nachhaltigeren Genuss.",
     origin: "Kolumbien/Brasilien",
-    image: "https://img.rewe-static.de/1461851/26993946_digital-image.png",
+    image: "https://img.rewe-static.de/1235745/23055526_digital-image.png",
     stock: 40
   },
   {
@@ -456,7 +456,7 @@ export const products = [
     description: "Dark chocolate bar; fair-trade reduces social externalities but cocoa has high footprint.",
     longDescription: "Dunkle Schokolade mit 70% Kakaoanteil aus fairem Handel. Fair Trade sorgt für bessere Arbeitsbedingungen, der Kakaoanbau hat jedoch weiterhin ökologische Auswirkungen.",
     origin: "Ghana",
-    image: "https://img.rewe-static.de/0504115/24033890_digital-image.png",
+    image: "https://img.rewe-static.de/0145497/12672220_digital-image.png",
     stock: 60
   },
   {
@@ -480,7 +480,7 @@ export const products = [
     description: "Free-range eggs; animal welfare better than caged eggs but still high true price.",
     longDescription: "Freilandeier von glücklichen Hühnern. Bessere Tierhaltung als bei Käfig- oder Bodenhaltung, aber die Eierproduktion hat weiterhin Umweltauswirkungen durch Futterproduktion und Emissionen.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/1548933/27125741_digital-image.png",
+    image: "https://img.rewe-static.de/8677300/33788982_digital-image.png",
     stock: 50
   }
 ];
