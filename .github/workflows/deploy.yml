@@ -39,6 +39,14 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Verify build output
+        run: |
+          echo "=== Dist folder contents ==="
+          ls -la dist/
+          echo "=== Index.html content ==="
+          cat dist/index.html
+          echo "=== Checking for JSX files (should be none) ==="
+          find dist/ -name "*.jsx" || echo "No JSX files found (good!)"
       - name: Create 404.html for SPA
         run: cp dist/index.html dist/404.html
       - name: Create .nojekyll file
