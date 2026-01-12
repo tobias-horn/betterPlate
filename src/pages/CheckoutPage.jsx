@@ -10,7 +10,8 @@ import {
   Check,
   Truck,
   ShieldCheck,
-  Leaf
+  Lock,
+  Sparkles
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
@@ -18,49 +19,50 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
   const { 
     items, 
-    subtotal, 
+    subtotal,
+    truePriceTotal,
+    truePriceContribution,
+    truePriceContributionAmount,
     deliveryFee, 
     total, 
     deliverySlot,
-    sustainabilityScore,
     clearCart
   } = useCart();
 
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    street: '',
-    houseNumber: '',
-    postalCode: '',
-    city: '',
-    paymentMethod: 'card'
-  });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+  // Pre-filled demo data (greyed out)
+  const demoData = {
+    firstName: 'Max',
+    lastName: 'Mustermann',
+    email: 'max.mustermann@email.de',
+    phone: '+49 123 4567890',
+    street: 'Musterstraße',
+    houseNumber: '42',
+    postalCode: '80331',
+    city: 'München',
+    paymentMethod: 'card'
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleProceedToSurvey = async () => {
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Small delay to show processing state
+    await new Promise(resolve => setTimeout(resolve, 800));
     
-    setIsSubmitting(false);
-    setIsComplete(true);
+    // Navigate to survey with cart data
+    navigate('/survey', {
+      state: {
+        cartData: items,
+        truePricePercentage: truePriceContribution
+      }
+    });
+    
+    // Clear cart after navigating
     clearCart();
   };
 
-  if (items.length === 0 && !isComplete) {
+  if (items.length === 0) {
     return (
       <div className="text-center py-16">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">
@@ -68,49 +70,6 @@ const CheckoutPage = () => {
         </h2>
         <Link to="/" className="text-rewe-red hover:underline">
           Zurück zum Einkaufen
-        </Link>
-      </div>
-    );
-  }
-
-  if (isComplete) {
-    return (
-      <div className="max-w-lg mx-auto text-center py-16">
-        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <Check className="text-green-600" size={40} />
-        </div>
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">
-          Bestellung erfolgreich!
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Vielen Dank für Ihre Bestellung. Sie erhalten in Kürze eine Bestätigungs-E-Mail.
-        </p>
-        
-        {deliverySlot && (
-          <div className="bg-gray-50 rounded-xl p-4 mb-6 text-left">
-            <div className="flex items-center gap-2 mb-2">
-              <Truck className="text-rewe-red" size={20} />
-              <span className="font-semibold">Liefertermin</span>
-            </div>
-            <p className="text-gray-700">
-              {deliverySlot.dateFormatted}<br />
-              {deliverySlot.time}
-            </p>
-          </div>
-        )}
-
-        <div className="bg-green-50 rounded-xl p-4 mb-6">
-          <div className="flex items-center gap-2 justify-center mb-2">
-            <Leaf className="text-green-600" size={20} />
-            <span className="font-semibold text-green-800">Nachhaltigkeits-Score: {sustainabilityScore}%</span>
-          </div>
-          <p className="text-sm text-green-700">
-            Danke, dass Sie nachhaltig einkaufen! 🌱
-          </p>
-        </div>
-
-        <Link to="/" className="btn-primary inline-block">
-          Weiter einkaufen
         </Link>
       </div>
     );
@@ -128,134 +87,128 @@ const CheckoutPage = () => {
 
       <h1 className="text-2xl font-bold text-gray-800">Kasse</h1>
 
-      <form onSubmit={handleSubmit} className="grid lg:grid-cols-3 gap-6">
-        {/* Form Fields */}
+      {/* Demo Notice */}
+      <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+        <div className="flex items-start gap-3">
+          <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <Lock className="text-amber-600" size={16} />
+          </div>
+          <div>
+            <p className="font-medium text-amber-800">Demo-Modus</p>
+            <p className="text-sm text-amber-700">
+              Dies ist ein Prototyp. Die Bestelldaten sind vorausgefüllt. Klicken Sie auf "Jetzt kaufen", um zur Feedback-Umfrage zu gelangen.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Form Fields - Greyed out */}
         <div className="lg:col-span-2 space-y-6">
           {/* Personal Info */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 opacity-75">
             <div className="flex items-center gap-2 mb-4">
-              <User className="text-rewe-red" size={20} />
-              <h2 className="font-semibold text-gray-800">Persönliche Daten</h2>
+              <User className="text-gray-400" size={20} />
+              <h2 className="font-semibold text-gray-500">Persönliche Daten</h2>
+              <Lock className="text-gray-300 ml-auto" size={16} />
             </div>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Vorname</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Vorname</label>
                 <input
                   type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  required
-                  className="input-field"
-                  placeholder="Max"
+                  value={demoData.firstName}
+                  disabled
+                  className="w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg text-gray-500 cursor-not-allowed"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nachname</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Nachname</label>
                 <input
                   type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  required
-                  className="input-field"
-                  placeholder="Mustermann"
+                  value={demoData.lastName}
+                  disabled
+                  className="w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg text-gray-500 cursor-not-allowed"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-400 mb-1">
                   <Mail className="inline" size={14} /> E-Mail
                 </label>
                 <input
                   type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="input-field"
-                  placeholder="max@beispiel.de"
+                  value={demoData.email}
+                  disabled
+                  className="w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg text-gray-500 cursor-not-allowed"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-400 mb-1">
                   <Phone className="inline" size={14} /> Telefon
                 </label>
                 <input
                   type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="input-field"
-                  placeholder="+49 123 456789"
+                  value={demoData.phone}
+                  disabled
+                  className="w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg text-gray-500 cursor-not-allowed"
                 />
               </div>
             </div>
           </div>
 
           {/* Delivery Address */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 opacity-75">
             <div className="flex items-center gap-2 mb-4">
-              <MapPin className="text-rewe-red" size={20} />
-              <h2 className="font-semibold text-gray-800">Lieferadresse</h2>
+              <MapPin className="text-gray-400" size={20} />
+              <h2 className="font-semibold text-gray-500">Lieferadresse</h2>
+              <Lock className="text-gray-300 ml-auto" size={16} />
             </div>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Straße</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Straße</label>
                 <input
                   type="text"
-                  name="street"
-                  value={formData.street}
-                  onChange={handleChange}
-                  required
-                  className="input-field"
-                  placeholder="Musterstraße"
+                  value={demoData.street}
+                  disabled
+                  className="w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg text-gray-500 cursor-not-allowed"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Hausnummer</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Hausnummer</label>
                 <input
                   type="text"
-                  name="houseNumber"
-                  value={formData.houseNumber}
-                  onChange={handleChange}
-                  required
-                  className="input-field"
-                  placeholder="123"
+                  value={demoData.houseNumber}
+                  disabled
+                  className="w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg text-gray-500 cursor-not-allowed"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">PLZ</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">PLZ</label>
                 <input
                   type="text"
-                  name="postalCode"
-                  value={formData.postalCode}
-                  onChange={handleChange}
-                  required
-                  className="input-field"
-                  placeholder="12345"
+                  value={demoData.postalCode}
+                  disabled
+                  className="w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg text-gray-500 cursor-not-allowed"
                 />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Stadt</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Stadt</label>
                 <input
                   type="text"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  required
-                  className="input-field"
-                  placeholder="Berlin"
+                  value={demoData.city}
+                  disabled
+                  className="w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg text-gray-500 cursor-not-allowed"
                 />
               </div>
             </div>
           </div>
 
           {/* Payment Method */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 opacity-75">
             <div className="flex items-center gap-2 mb-4">
-              <CreditCard className="text-rewe-red" size={20} />
-              <h2 className="font-semibold text-gray-800">Zahlungsmethode</h2>
+              <CreditCard className="text-gray-400" size={20} />
+              <h2 className="font-semibold text-gray-500">Zahlungsmethode</h2>
+              <Lock className="text-gray-300 ml-auto" size={16} />
             </div>
             <div className="space-y-3">
               {[
@@ -264,28 +217,20 @@ const CheckoutPage = () => {
                 { id: 'klarna', label: 'Klarna', icon: '🔵' },
                 { id: 'cash', label: 'Barzahlung bei Lieferung', icon: '💵' }
               ].map(method => (
-                <label
+                <div
                   key={method.id}
-                  className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all ${
-                    formData.paymentMethod === method.id
-                      ? 'border-rewe-red bg-red-50'
-                      : 'border-gray-200 hover:border-gray-300'
+                  className={`flex items-center gap-3 p-4 rounded-lg border-2 ${
+                    demoData.paymentMethod === method.id
+                      ? 'border-gray-300 bg-gray-50'
+                      : 'border-gray-200'
                   }`}
                 >
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    value={method.id}
-                    checked={formData.paymentMethod === method.id}
-                    onChange={handleChange}
-                    className="hidden"
-                  />
-                  <span className="text-2xl">{method.icon}</span>
-                  <span className="font-medium text-gray-800">{method.label}</span>
-                  {formData.paymentMethod === method.id && (
-                    <Check className="ml-auto text-rewe-red" size={20} />
+                  <span className="text-2xl opacity-50">{method.icon}</span>
+                  <span className="font-medium text-gray-500">{method.label}</span>
+                  {demoData.paymentMethod === method.id && (
+                    <Check className="ml-auto text-gray-400" size={20} />
                   )}
-                </label>
+                </div>
               ))}
             </div>
           </div>
@@ -322,6 +267,19 @@ const CheckoutPage = () => {
                 <span className="text-gray-600">Zwischensumme</span>
                 <span>{subtotal.toFixed(2)} €</span>
               </div>
+              <div className="flex justify-between text-orange-600">
+                <span>True Price Summe</span>
+                <span>{truePriceTotal.toFixed(2)} €</span>
+              </div>
+              {truePriceContributionAmount > 0 && (
+                <div className="flex justify-between text-emerald-600">
+                  <span className="flex items-center gap-1">
+                    <Sparkles size={14} />
+                    True Price Beitrag ({truePriceContribution}%)
+                  </span>
+                  <span className="font-medium">+{truePriceContributionAmount.toFixed(2)} €</span>
+                </div>
+              )}
               <div className="flex justify-between">
                 <span className="text-gray-600">Liefergebühr</span>
                 <span>{deliveryFee === 0 ? 'Kostenlos' : `${deliveryFee.toFixed(2)} €`}</span>
@@ -334,6 +292,18 @@ const CheckoutPage = () => {
                 <span className="text-2xl font-bold">{total.toFixed(2)} €</span>
               </div>
             </div>
+
+            {/* True Price Contribution Badge */}
+            {truePriceContribution > 0 && (
+              <div className="bg-emerald-50 rounded-lg p-3">
+                <div className="flex items-center gap-2 text-emerald-700">
+                  <Sparkles size={16} className="text-emerald-600" />
+                  <span className="text-sm font-medium">
+                    Sie tragen {truePriceContribution}% zum True Price bei! 🌱
+                  </span>
+                </div>
+              </div>
+            )}
 
             {/* Delivery Slot */}
             {deliverySlot && (
@@ -349,7 +319,7 @@ const CheckoutPage = () => {
 
             {/* Submit Button */}
             <button
-              type="submit"
+              onClick={handleProceedToSurvey}
               disabled={isSubmitting}
               className="w-full btn-primary py-3 flex items-center justify-center gap-2"
             >
@@ -371,7 +341,7 @@ const CheckoutPage = () => {
             </p>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };
