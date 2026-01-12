@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Heart, Plus, AlertTriangle, Leaf } from 'lucide-react';
+import { ShoppingCart, Heart, Plus, AlertTriangle, Leaf, Check } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useFavorites } from '../context/FavoritesContext';
 import { ScoreBadgeCompact } from './ScoreBadges';
@@ -7,12 +8,15 @@ import { ScoreBadgeCompact } from './ScoreBadges';
 const ProductCard = ({ product }) => {
   const { addItem } = useCart();
   const { isFavorite, toggleFavorite } = useFavorites();
+  const [showAdded, setShowAdded] = useState(false);
   const favorite = isFavorite(product.id);
 
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
     addItem(product);
+    setShowAdded(true);
+    setTimeout(() => setShowAdded(false), 1500);
   };
 
   const handleToggleFavorite = (e) => {
@@ -147,10 +151,23 @@ const ProductCard = ({ product }) => {
         {/* Add to Cart Button */}
         <button
           onClick={handleAddToCart}
-          className="w-full bg-rewe-red hover:bg-rewe-red-dark text-white py-2 rounded-lg flex items-center justify-center gap-1 transition-colors"
+          className={`w-full py-2 rounded-lg flex items-center justify-center gap-1 transition-all duration-300 ${
+            showAdded 
+              ? 'bg-green-500 text-white' 
+              : 'bg-rewe-red hover:bg-rewe-red-dark text-white'
+          }`}
         >
-          <ShoppingCart size={16} />
-          <span className="text-sm">In den Warenkorb</span>
+          {showAdded ? (
+            <>
+              <Check size={16} />
+              <span className="text-sm">Hinzugefügt!</span>
+            </>
+          ) : (
+            <>
+              <ShoppingCart size={16} />
+              <span className="text-sm">In den Warenkorb</span>
+            </>
+          )}
         </button>
       </div>
     </Link>

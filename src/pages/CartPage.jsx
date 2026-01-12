@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ShoppingBag, ArrowRight, Truck, Leaf, Sparkles } from 'lucide-react';
+import { ShoppingBag, ArrowRight, Truck, Sparkles } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import CartItem from '../components/CartItem';
 import DeliverySlotPicker from '../components/DeliverySlotPicker';
@@ -75,6 +75,13 @@ const CartPage = () => {
           <DeliverySlotPicker
             selectedSlot={deliverySlot}
             onSelectSlot={setDeliverySlot}
+          />
+
+          {/* Smart Recommendations - moved to main area for better layout */}
+          <SmartCartRecommendations 
+            currentHealthScore={cartHealthScore}
+            currentImpactScore={cartImpactScore}
+            cartItems={items}
           />
         </div>
 
@@ -177,32 +184,6 @@ const CartPage = () => {
               </p>
             )}
           </div>
-
-          {/* Smart Recommendations */}
-          <SmartCartRecommendations 
-            currentHealthScore={cartHealthScore}
-            currentImpactScore={cartImpactScore}
-            cartItems={items}
-          />
-
-          {/* Free Delivery Progress */}
-          {subtotal < 50 && (
-            <div className="bg-blue-50 rounded-xl p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Truck className="text-blue-600" size={18} />
-                <span className="font-medium text-gray-800">Kostenlose Lieferung</span>
-              </div>
-              <div className="h-2 bg-blue-200 rounded-full overflow-hidden mb-2">
-                <div 
-                  className="h-full bg-blue-600 rounded-full transition-all"
-                  style={{ width: `${(subtotal / 50) * 100}%` }}
-                />
-              </div>
-              <p className="text-sm text-blue-700">
-                Noch <strong>{(50 - subtotal).toFixed(2)} €</strong> bis zur kostenlosen Lieferung ab 50 €
-              </p>
-            </div>
-          )}
         </div>
       </div>
     </div>

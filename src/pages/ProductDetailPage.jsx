@@ -11,7 +11,8 @@ import {
   MapPin,
   Award,
   Info,
-  AlertTriangle
+  AlertTriangle,
+  Check
 } from 'lucide-react';
 import { getProductById, products } from '../data/products';
 import { useCart } from '../context/CartContext';
@@ -29,6 +30,7 @@ const ProductDetailPage = () => {
   
   const [quantity, setQuantity] = useState(1);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [showAdded, setShowAdded] = useState(false);
 
   if (!product) {
     return (
@@ -53,7 +55,8 @@ const ProductDetailPage = () => {
 
   const handleAddToCart = () => {
     addItem(product, quantity);
-    // Show feedback (could add toast notification)
+    setShowAdded(true);
+    setTimeout(() => setShowAdded(false), 1500);
   };
 
   const getNutriScoreColor = (score) => {
@@ -199,10 +202,23 @@ const ProductDetailPage = () => {
             </div>
             <button
               onClick={handleAddToCart}
-              className="flex-1 btn-primary flex items-center justify-center gap-2 py-3"
+              className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-medium transition-all duration-300 ${
+                showAdded 
+                  ? 'bg-green-500 text-white' 
+                  : 'btn-primary'
+              }`}
             >
-              <ShoppingCart size={20} />
-              <span>In den Warenkorb</span>
+              {showAdded ? (
+                <>
+                  <Check size={20} />
+                  <span>Hinzugefügt!</span>
+                </>
+              ) : (
+                <>
+                  <ShoppingCart size={20} />
+                  <span>In den Warenkorb</span>
+                </>
+              )}
             </button>
           </div>
 
