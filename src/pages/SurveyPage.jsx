@@ -13,7 +13,7 @@ const SurveyPage = () => {
   
   const [answers, setAnswers] = useState({
     q1_understanding: null,
-    q2_truePrice_covers: null,
+    q2_truePrice_covers: [],
     q3_willingness_to_pay: null,
     q5_impact_points_motivation: null,
     q6_switch_reason: null,
@@ -38,7 +38,7 @@ const SurveyPage = () => {
       id: 'q2_truePrice_covers',
       question: 'What do you think the "True Price" covers?',
       questionDE: 'Was deckt der "True Price" Ihrer Meinung nach ab?',
-      type: 'single-choice',
+      type: 'multi-choice',
       options: [
         { value: 'environmental_costs', label: 'Environmental costs', labelDE: 'Umweltkosten' },
         { value: 'social_costs', label: 'Social costs', labelDE: 'Soziale Kosten' },
@@ -149,10 +149,30 @@ const SurveyPage = () => {
     }));
   };
 
+  const handleMultiChoiceAnswer = (value) => {
+    setAnswers(prev => {
+      const currentSelections = prev[currentQuestion.id] || [];
+      if (currentSelections.includes(value)) {
+        return {
+          ...prev,
+          [currentQuestion.id]: currentSelections.filter(v => v !== value)
+        };
+      } else {
+        return {
+          ...prev,
+          [currentQuestion.id]: [...currentSelections, value]
+        };
+      }
+    });
+  };
+
   const canProceed = () => {
     const answer = answers[currentQuestion.id];
     if (currentQuestion.type === 'text') {
       return true; // Text answers are optional
+    }
+    if (currentQuestion.type === 'multi-choice') {
+      return Array.isArray(answer) && answer.length > 0;
     }
     return answer !== null && answer !== undefined;
   };
@@ -213,7 +233,7 @@ const SurveyPage = () => {
         q2_truePrice_covers: {
           questionId: 'q2',
           questionText: 'What do you think the True Price covers?',
-          answerType: 'single-choice',
+          answerType: 'multi-choice',
           answer: answers.q2_truePrice_covers
         },
         q3_willingness_to_pay: {
@@ -410,6 +430,41 @@ const SurveyPage = () => {
                 </div>
               </button>
             ))}
+          </div>
+        )}
+
+        {/* Multi Choice Question */}
+        {currentQuestion.type === 'multi-choice' && (
+          <div className="space-y-3">
+            <p className="text-sm text-gray-500 mb-2">Mehrfachauswahl möglich</p>
+            {currentQuestion.options.map(option => {
+              const isSelected = (answers[currentQuestion.id] || []).includes(option.value);
+              return (
+                <button
+                  key={option.value}
+                  onClick={() => handleMultiChoiceAnswer(option.value)}
+                  className={`w-full p-4 rounded-xl text-left transition-all flex items-center gap-3 ${
+                    isSelected
+                      ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center ${
+                    isSelected
+                      ? 'border-white bg-white'
+                      : 'border-gray-400'
+                  }`}>
+                    {isSelected && (
+                      <Check className="w-3 h-3 text-green-500" />
+                    )}
+                  </div>
+                  <div>
+                    <span className="font-medium">{option.labelDE}</span>
+                    <span className="text-sm opacity-75 ml-2">({option.label})</span>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         )}
 
