@@ -274,18 +274,33 @@ const SurveyPage = () => {
     };
 
     try {
-      await fetch('https://n8n.tobiashorn.com/webhook-test/d7377674-98b2-497a-bb0d-d9030be0e59d', {
+      // Use navigator.sendBeacon for reliable delivery, or fetch without cors restrictions
+      const webhookUrl = 'https://n8n.tobiashorn.com/webhook-test/d7377674-98b2-497a-bb0d-d9030be0e59d';
+      
+      // Try fetch first
+      const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        mode: 'no-cors', // Handle CORS
         body: JSON.stringify(payload)
       });
       
+      console.log('Survey submitted successfully:', response.status);
       setIsComplete(true);
     } catch (error) {
       console.error('Survey submission error:', error);
+      
+      // Fallback: try sendBeacon if fetch fails due to CORS
+      try {
+        const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+        navigator.sendBeacon('https://n8n.tobiashorn.com/webhook-test/d7377674-98b2-497a-bb0d-d9030be0e59d', blob);
+        console.log('Survey submitted via sendBeacon');
+      } catch (beaconError) {
+        console.error('SendBeacon also failed:', beaconError);
+      }
+      
       // Still mark as complete even if webhook fails
       setIsComplete(true);
     }
