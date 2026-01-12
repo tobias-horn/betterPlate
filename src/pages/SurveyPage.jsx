@@ -275,7 +275,7 @@ const SurveyPage = () => {
 
     try {
       // Use navigator.sendBeacon for reliable delivery, or fetch without cors restrictions
-      const webhookUrl = 'https://n8n.tobiashorn.com/webhook-test/d7377674-98b2-497a-bb0d-d9030be0e59d';
+      const webhookUrl = 'https://n8n.tobiashorn.com/webhook/d7377674-98b2-497a-bb0d-d9030be0e59d';
       
       // Try fetch first
       const response = await fetch(webhookUrl, {
@@ -295,7 +295,7 @@ const SurveyPage = () => {
       // Fallback: try sendBeacon if fetch fails due to CORS
       try {
         const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-        navigator.sendBeacon('https://n8n.tobiashorn.com/webhook-test/d7377674-98b2-497a-bb0d-d9030be0e59d', blob);
+        navigator.sendBeacon('https://n8n.tobiashorn.com/webhook/d7377674-98b2-497a-bb0d-d9030be0e59d', blob);
         console.log('Survey submitted via sendBeacon');
       } catch (beaconError) {
         console.error('SendBeacon also failed:', beaconError);
