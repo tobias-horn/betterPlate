@@ -70,7 +70,7 @@ export const products = [
     description: "Organic, vegan tofu; 'Bio' and 'Vegan' badges; low externalities.",
     longDescription: "Naturbelassener Bio-Tofu aus europäischen Sojabohnen. Vielseitig einsetzbar zum Braten, Grillen oder Marinieren. Hoher Proteingehalt für eine ausgewogene pflanzliche Ernährung.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/5141612/29546836_digital-image.png",
+    image: "https://img.rewe-static.de/7905813/33782965_digital-image.png",
     stock: 30
   },
   {
