@@ -118,7 +118,7 @@ export const products = [
     description: "Regional, organic potatoes; substitution for 2.5 kg pack; low true price.",
     longDescription: "Festkochende Bio-Kartoffeln aus regionalem Anbau. Perfekt für Bratkartoffeln, Kartoffelsalat und als Beilage. Kurze Transportwege garantieren Frische und schonen die Umwelt.",
     origin: "Bayern, Deutschland",
-    image: "https://img.rewe-static.de/468783/23949880_digital-image.png",
+    image: "https://img.rewe-static.de/0468783/23949880_digital-image.png",
     stock: 40
   },
   {
@@ -166,7 +166,7 @@ export const products = [
     description: "Carrots sold with greens; fresh and regional; no base price given.",
     longDescription: "Frische Bundmöhren mit Grün. Das Karottengrün kann für Pesto oder Suppen verwendet werden. Besonders frisch und aromatisch aus regionalem Anbau.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/483010/7361800_digital-image.png",
+    image: "https://img.rewe-static.de/0483010/7361800_digital-image.png",
     stock: 25
   },
   {
