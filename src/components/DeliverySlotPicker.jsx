@@ -46,14 +46,14 @@ const DeliverySlotPicker = ({ selectedSlot, onSelectSlot }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-4">
-      <div className="flex items-center gap-2 mb-4">
-        <Calendar className="text-rewe-red" size={20} />
-        <h3 className="font-semibold text-gray-800">Liefertermin wählen</h3>
+    <div className="bg-white rounded-lg sm:rounded-xl border border-gray-200 p-3 sm:p-4">
+      <div className="flex items-center gap-2 mb-3 sm:mb-4">
+        <Calendar className="text-rewe-red" size={18} />
+        <h3 className="font-semibold text-gray-800 text-sm sm:text-base">Liefertermin wählen</h3>
       </div>
 
       {/* Date Selection */}
-      <div className="flex gap-2 overflow-x-auto pb-4 mb-4 scrollbar-hide">
+      <div className="flex gap-1.5 sm:gap-2 overflow-x-auto pb-3 sm:pb-4 mb-3 sm:mb-4 scrollbar-hide -mx-3 px-3 sm:mx-0 sm:px-0">
         {dates.map((date, idx) => {
           const { day, dayNum, month } = formatDate(date);
           const isSelectedDate = selectedDate?.toDateString() === date.toDateString();
@@ -63,17 +63,17 @@ const DeliverySlotPicker = ({ selectedSlot, onSelectSlot }) => {
             <button
               key={idx}
               onClick={() => setSelectedDate(date)}
-              className={`flex flex-col items-center min-w-[70px] p-3 rounded-xl border-2 transition-all ${
+              className={`flex flex-col items-center min-w-[58px] sm:min-w-[70px] p-2 sm:p-3 rounded-lg sm:rounded-xl border-2 transition-all active:scale-95 ${
                 isSelectedDate
                   ? 'border-rewe-red bg-red-50'
                   : 'border-gray-200 hover:border-gray-300'
               }`}
             >
-              <span className={`text-xs font-medium ${isToday ? 'text-rewe-red' : 'text-gray-500'}`}>
+              <span className={`text-[10px] sm:text-xs font-medium ${isToday ? 'text-rewe-red' : 'text-gray-500'}`}>
                 {isToday ? 'Heute' : day}
               </span>
-              <span className="text-xl font-bold text-gray-800">{dayNum}</span>
-              <span className="text-xs text-gray-500">{month}</span>
+              <span className="text-lg sm:text-xl font-bold text-gray-800">{dayNum}</span>
+              <span className="text-[10px] sm:text-xs text-gray-500">{month}</span>
             </button>
           );
         })}
@@ -82,17 +82,17 @@ const DeliverySlotPicker = ({ selectedSlot, onSelectSlot }) => {
       {/* Time Slots */}
       {selectedDate && (
         <div>
-          <div className="flex items-center gap-2 mb-3">
-            <Clock className="text-gray-400" size={16} />
-            <span className="text-sm font-medium text-gray-600">Verfügbare Zeitfenster</span>
+          <div className="flex items-center gap-2 mb-2 sm:mb-3">
+            <Clock className="text-gray-400" size={14} />
+            <span className="text-xs sm:text-sm font-medium text-gray-600">Verfügbare Zeitfenster</span>
           </div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
             {timeSlots.map((slot) => (
               <button
                 key={slot.id}
                 onClick={() => slot.available && handleSelectSlot(selectedDate, slot)}
                 disabled={!slot.available}
-                className={`p-3 rounded-lg border-2 text-sm font-medium transition-all flex items-center justify-center gap-2 ${
+                className={`p-2 sm:p-3 rounded-lg border-2 text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-1 sm:gap-2 active:scale-95 ${
                   isSelected(selectedDate, slot)
                     ? 'border-rewe-red bg-rewe-red text-white'
                     : slot.available
@@ -100,9 +100,9 @@ const DeliverySlotPicker = ({ selectedSlot, onSelectSlot }) => {
                       : 'border-gray-100 bg-gray-50 text-gray-400 cursor-not-allowed'
                 }`}
               >
-                {isSelected(selectedDate, slot) && <Check size={16} />}
+                {isSelected(selectedDate, slot) && <Check size={14} />}
                 {slot.label}
-                {!slot.available && <span className="text-xs">(belegt)</span>}
+                {!slot.available && <span className="text-[10px]">(belegt)</span>}
               </button>
             ))}
           </div>
@@ -111,10 +111,10 @@ const DeliverySlotPicker = ({ selectedSlot, onSelectSlot }) => {
 
       {/* Selected Slot Summary */}
       {selectedSlot && (
-        <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
-          <div className="flex items-center gap-2 text-green-700">
-            <Check size={18} />
-            <span className="font-medium">
+        <div className="mt-3 sm:mt-4 p-2 sm:p-3 bg-green-50 rounded-lg border border-green-200">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-green-700">
+            <Check size={16} />
+            <span className="font-medium text-xs sm:text-sm">
               {selectedSlot.dateFormatted}, {selectedSlot.time}
             </span>
           </div>

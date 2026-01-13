@@ -2,9 +2,9 @@ import { Minus, Plus, Trash2 } from 'lucide-react';
 
 const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
   return (
-    <div className="flex gap-4 p-4 bg-white rounded-xl border border-gray-100">
+    <div className="flex gap-2 sm:gap-4 p-3 sm:p-4 bg-white rounded-xl border border-gray-100">
       {/* Product Image */}
-      <div className="w-20 h-20 bg-gray-50 rounded-lg p-2 flex-shrink-0">
+      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-50 rounded-lg p-1.5 sm:p-2 flex-shrink-0">
         <img
           src={item.image}
           alt={item.name}
@@ -17,7 +17,7 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
 
       {/* Product Info */}
       <div className="flex-1 min-w-0">
-        <h3 className="font-medium text-gray-800 text-sm line-clamp-2">{item.name}</h3>
+        <h3 className="font-medium text-gray-800 text-xs sm:text-sm line-clamp-2">{item.name}</h3>
         {item.basePrice && (
           <p className="text-xs text-gray-500 mt-1">{item.basePrice}</p>
         )}
@@ -36,19 +36,19 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
         </div>
 
         {/* Quantity Controls */}
-        <div className="flex items-center gap-2 mt-3">
+        <div className="flex items-center gap-1.5 sm:gap-2 mt-2 sm:mt-3">
           <button
             onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
-            className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors active:bg-gray-100"
           >
-            <Minus size={16} />
+            <Minus size={14} className="sm:w-4 sm:h-4" />
           </button>
-          <span className="w-8 text-center font-medium">{item.quantity}</span>
+          <span className="w-6 sm:w-8 text-center font-medium text-sm sm:text-base">{item.quantity}</span>
           <button
             onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
-            className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors active:bg-gray-100"
           >
-            <Plus size={16} />
+            <Plus size={14} className="sm:w-4 sm:h-4" />
           </button>
         </div>
       </div>

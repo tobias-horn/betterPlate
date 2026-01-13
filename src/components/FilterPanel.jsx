@@ -52,12 +52,12 @@ const FilterPanel = ({ filters, onFilterChange, sortBy, onSortChange }) => {
           <ChevronDown size={18} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
         </button>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
           <span className="text-sm text-gray-500 hidden sm:inline">Sortieren:</span>
           <select
             value={sortBy}
             onChange={(e) => onSortChange(e.target.value)}
-            className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-rewe-red outline-none"
+            className="px-2 sm:px-3 py-1.5 sm:py-2 bg-white border border-gray-200 rounded-lg text-xs sm:text-sm focus:ring-2 focus:ring-rewe-red outline-none max-w-[140px] sm:max-w-none"
           >
             {filterOptions.sortOptions.map((option) => (
               <option key={option.id} value={option.id}>

@@ -112,15 +112,15 @@ const ProductsPage = () => {
   return (
     <div className="space-y-6">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-rewe-red to-red-600 rounded-2xl p-6 text-white">
-        <h1 className="text-2xl md:text-3xl font-bold mb-2">
-          Willkommen bei FreshCart 🛒
+      <div className="bg-gradient-to-r from-rewe-red to-red-600 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-white">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1.5 sm:mb-2">
+          Willkommen bei BetterPlate 🛒
         </h1>
-        <p className="text-red-100 mb-4">
-          Entdecken Sie nachhaltige Produkte mit transparenten True Prices
+        <p className="text-red-100 text-sm sm:text-base mb-3 sm:mb-4">
+          Nachhaltige Produkte mit transparenten True Prices
         </p>
-        <div className="bg-white/20 rounded-lg p-3 backdrop-blur-sm">
-          <p className="text-sm">
+        <div className="bg-white/20 rounded-lg p-2.5 sm:p-3 backdrop-blur-sm">
+          <p className="text-xs sm:text-sm">
             🌱 <strong>True Price:</strong> Zeigt die wahren Kosten inkl. Umweltauswirkungen
           </p>
         </div>
@@ -163,7 +163,7 @@ const ProductsPage = () => {
 
       {/* Product Grid */}
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4">
           {filteredProducts.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}

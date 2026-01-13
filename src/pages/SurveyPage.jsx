@@ -353,10 +353,10 @@ const SurveyPage = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto py-8">
+    <div className="max-w-2xl mx-auto py-4 sm:py-8 px-1 sm:px-0">
       {/* Progress Bar */}
-      <div className="mb-8">
-        <div className="flex justify-between text-sm text-gray-500 mb-2">
+      <div className="mb-6 sm:mb-8">
+        <div className="flex justify-between text-xs sm:text-sm text-gray-500 mb-2">
           <span>Frage {currentStep + 1} von {questions.length}</span>
           <span>{Math.round(((currentStep + 1) / questions.length) * 100)}%</span>
         </div>
@@ -369,30 +369,30 @@ const SurveyPage = () => {
       </div>
 
       {/* Question Card */}
-      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-6">
-        <h2 className="text-xl font-semibold text-gray-800 mb-2">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-8 mb-4 sm:mb-6">
+        <h2 className="text-base sm:text-xl font-semibold text-gray-800 mb-1 sm:mb-2">
           {currentQuestion.questionDE}
         </h2>
-        <p className="text-sm text-gray-500 mb-8">
+        <p className="text-xs sm:text-sm text-gray-500 mb-5 sm:mb-8">
           {currentQuestion.question}
         </p>
 
         {/* Scale Question */}
         {currentQuestion.type === 'scale' && (
-          <div className="space-y-4">
-            <div className="flex justify-between text-sm text-gray-500 px-2">
+          <div className="space-y-3 sm:space-y-4">
+            <div className="flex justify-between text-[10px] sm:text-sm text-gray-500 px-1 sm:px-2">
               <span>{currentQuestion.scaleLabelsDE[1]}</span>
               <span>{currentQuestion.scaleLabelsDE[7]}</span>
             </div>
-            <div className="flex justify-between gap-2">
+            <div className="flex justify-between gap-1 sm:gap-2">
               {[1, 2, 3, 4, 5, 6, 7].map(value => (
                 <button
                   key={value}
                   onClick={() => handleScaleAnswer(value)}
-                  className={`flex-1 h-14 rounded-xl font-semibold text-lg transition-all ${
+                  className={`flex-1 h-10 sm:h-14 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-lg transition-all ${
                     answers[currentQuestion.id] === value
                       ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-lg scale-105'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200 active:bg-gray-300'
                   }`}
                 >
                   {value}
@@ -404,29 +404,29 @@ const SurveyPage = () => {
 
         {/* Single Choice Question */}
         {currentQuestion.type === 'single-choice' && (
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {currentQuestion.options.map(option => (
               <button
                 key={option.value}
                 onClick={() => handleChoiceAnswer(option.value)}
-                className={`w-full p-4 rounded-xl text-left transition-all flex items-center gap-3 ${
+                className={`w-full p-3 sm:p-4 rounded-lg sm:rounded-xl text-left transition-all flex items-center gap-2 sm:gap-3 ${
                   answers[currentQuestion.id] === option.value
                     ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:bg-gray-300'
                 }`}
               >
-                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
                   answers[currentQuestion.id] === option.value
                     ? 'border-white bg-white'
                     : 'border-gray-400'
                 }`}>
                   {answers[currentQuestion.id] === option.value && (
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                    <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-green-500" />
                   )}
                 </div>
-                <div>
-                  <span className="font-medium">{option.labelDE}</span>
-                  <span className="text-sm opacity-75 ml-2">({option.label})</span>
+                <div className="min-w-0">
+                  <span className="font-medium text-sm sm:text-base">{option.labelDE}</span>
+                  <span className="text-xs sm:text-sm opacity-75 ml-1 sm:ml-2 hidden xs:inline">({option.label})</span>
                 </div>
               </button>
             ))}
@@ -435,32 +435,32 @@ const SurveyPage = () => {
 
         {/* Multi Choice Question */}
         {currentQuestion.type === 'multi-choice' && (
-          <div className="space-y-3">
-            <p className="text-sm text-gray-500 mb-2">Mehrfachauswahl möglich</p>
+          <div className="space-y-2 sm:space-y-3">
+            <p className="text-xs sm:text-sm text-gray-500 mb-2">Mehrfachauswahl möglich</p>
             {currentQuestion.options.map(option => {
               const isSelected = (answers[currentQuestion.id] || []).includes(option.value);
               return (
                 <button
                   key={option.value}
                   onClick={() => handleMultiChoiceAnswer(option.value)}
-                  className={`w-full p-4 rounded-xl text-left transition-all flex items-center gap-3 ${
+                  className={`w-full p-3 sm:p-4 rounded-lg sm:rounded-xl text-left transition-all flex items-center gap-2 sm:gap-3 ${
                     isSelected
                       ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:bg-gray-300'
                   }`}
                 >
-                  <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center ${
+                  <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 ${
                     isSelected
                       ? 'border-white bg-white'
                       : 'border-gray-400'
                   }`}>
                     {isSelected && (
-                      <Check className="w-3 h-3 text-green-500" />
+                      <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-green-500" />
                     )}
                   </div>
-                  <div>
-                    <span className="font-medium">{option.labelDE}</span>
-                    <span className="text-sm opacity-75 ml-2">({option.label})</span>
+                  <div className="min-w-0">
+                    <span className="font-medium text-sm sm:text-base">{option.labelDE}</span>
+                    <span className="text-xs sm:text-sm opacity-75 ml-1 sm:ml-2 hidden xs:inline">({option.label})</span>
                   </div>
                 </button>
               );
@@ -475,54 +475,55 @@ const SurveyPage = () => {
               value={answers[currentQuestion.id] || ''}
               onChange={(e) => handleTextAnswer(e.target.value)}
               placeholder="Ihre Antwort (optional)..."
-              className="w-full h-32 p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none"
+              className="w-full h-28 sm:h-32 p-3 sm:p-4 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none text-sm sm:text-base"
             />
           </div>
         )}
       </div>
 
       {/* Navigation */}
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-2">
         <button
           onClick={handlePrevious}
           disabled={currentStep === 0}
-          className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all ${
+          className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-medium transition-all text-sm sm:text-base ${
             currentStep === 0
               ? 'text-gray-300 cursor-not-allowed'
-              : 'text-gray-600 hover:bg-gray-100'
+              : 'text-gray-600 hover:bg-gray-100 active:bg-gray-200'
           }`}
         >
-          <ChevronLeft size={20} />
-          Zurück
+          <ChevronLeft size={18} className="sm:w-5 sm:h-5" />
+          <span className="hidden xs:inline">Zurück</span>
         </button>
 
         {currentStep < questions.length - 1 ? (
           <button
             onClick={handleNext}
             disabled={!canProceed()}
-            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all ${
+            className={`flex items-center gap-1 sm:gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-medium transition-all text-sm sm:text-base ${
               canProceed()
-                ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:shadow-lg'
+                ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:shadow-lg active:scale-95'
                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'
             }`}
           >
             Weiter
-            <ChevronRight size={20} />
+            <ChevronRight size={18} className="sm:w-5 sm:h-5" />
           </button>
         ) : (
           <button
             onClick={handleSubmit}
             disabled={isSubmitting}
-            className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:shadow-lg transition-all"
+            className="flex items-center gap-1 sm:gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-medium bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:shadow-lg transition-all text-sm sm:text-base active:scale-95"
           >
             {isSubmitting ? (
               <>
-                <Loader2 size={20} className="animate-spin" />
-                Wird gesendet...
+                <Loader2 size={18} className="animate-spin sm:w-5 sm:h-5" />
+                <span className="hidden xs:inline">Wird gesendet...</span>
+                <span className="xs:hidden">...</span>
               </>
             ) : (
               <>
-                <Send size={20} />
+                <Send size={18} className="sm:w-5 sm:h-5" />
                 Absenden
               </>
             )}

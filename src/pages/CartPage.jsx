@@ -50,11 +50,11 @@ const CartPage = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-800">
-          Warenkorb ({itemCount} {itemCount === 1 ? 'Artikel' : 'Artikel'})
+      <div className="flex items-center justify-between gap-2">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-800">
+          Warenkorb ({itemCount})
         </h1>
-        <Link to="/" className="text-rewe-red hover:underline text-sm">
+        <Link to="/" className="text-rewe-red hover:underline text-xs sm:text-sm whitespace-nowrap">
           Weiter einkaufen
         </Link>
       </div>

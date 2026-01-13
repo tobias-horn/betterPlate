@@ -70,7 +70,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* Product Image */}
-        <div className="h-40 p-4 flex items-center justify-center bg-gray-50">
+        <div className="h-32 sm:h-40 p-2 sm:p-4 flex items-center justify-center bg-gray-50">
           <img
             src={product.image}
             alt={product.name}
@@ -82,41 +82,41 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
-      <div className="p-4">
+      <div className="p-2.5 sm:p-4">
         {/* Brand */}
         {product.brand && (
           <p className="text-xs text-gray-500 mb-1">{product.brand}</p>
         )}
 
         {/* Product Name */}
-        <h3 className="font-medium text-gray-800 text-sm line-clamp-2 min-h-[2.5rem] mb-2">
+        <h3 className="font-medium text-gray-800 text-xs sm:text-sm line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem] mb-1.5 sm:mb-2">
           {product.name}
         </h3>
 
         {/* Base Price */}
         {product.basePrice && (
-          <p className="text-xs text-gray-500 mb-1">{product.basePrice}</p>
+          <p className="text-[10px] sm:text-xs text-gray-500 mb-1">{product.basePrice}</p>
         )}
 
         {/* Price Section */}
-        <div className="mb-2">
-          <span className="text-lg font-bold text-gray-900">
+        <div className="mb-1.5 sm:mb-2">
+          <span className="text-base sm:text-lg font-bold text-gray-900">
             {product.price.toFixed(2)} €
           </span>
         </div>
 
         {/* True Price Mini Visualization */}
-        <div className={`p-2 rounded-lg ${product.truePriceClass === 'high' ? 'bg-red-50' : 'bg-green-50'} mb-2`}>
+        <div className={`p-1.5 sm:p-2 rounded-lg ${product.truePriceClass === 'high' ? 'bg-red-50' : 'bg-green-50'} mb-1.5 sm:mb-2`}>
           <div className="flex items-center justify-between mb-1">
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-0.5 sm:gap-1">
               {product.truePriceClass === 'high' ? (
-                <AlertTriangle size={12} className="text-red-500" />
+                <AlertTriangle size={10} className="text-red-500 sm:w-3 sm:h-3" />
               ) : (
-                <Leaf size={12} className="text-green-500" />
+                <Leaf size={10} className="text-green-500 sm:w-3 sm:h-3" />
               )}
-              <span className="text-xs font-medium text-gray-700">True Price</span>
+              <span className="text-[10px] sm:text-xs font-medium text-gray-700">True Price</span>
             </div>
-            <span className={`text-xs font-bold ${product.truePriceClass === 'high' ? 'text-red-600' : 'text-green-600'}`}>
+            <span className={`text-[10px] sm:text-xs font-bold ${product.truePriceClass === 'high' ? 'text-red-600' : 'text-green-600'}`}>
               {product.truePrice.toFixed(2)} €
             </span>
           </div>
@@ -143,15 +143,15 @@ const ProductCard = ({ product }) => {
             </div>
           )}
           
-          <p className={`text-[10px] mt-1 ${product.truePriceClass === 'high' ? 'text-red-600' : 'text-green-600'}`}>
-            +{externalityCost.toFixed(2)} € versteckte Kosten ({gapPercentage}%)
+          <p className={`text-[9px] sm:text-[10px] mt-1 ${product.truePriceClass === 'high' ? 'text-red-600' : 'text-green-600'}`}>
+            +{externalityCost.toFixed(2)} € ({gapPercentage}%)
           </p>
         </div>
 
         {/* Add to Cart Button */}
         <button
           onClick={handleAddToCart}
-          className={`w-full py-2 rounded-lg flex items-center justify-center gap-1 transition-all duration-300 ${
+          className={`w-full py-1.5 sm:py-2 rounded-lg flex items-center justify-center gap-1 transition-all duration-300 ${
             showAdded 
               ? 'bg-green-500 text-white' 
               : 'bg-rewe-red hover:bg-rewe-red-dark text-white'
@@ -159,13 +159,14 @@ const ProductCard = ({ product }) => {
         >
           {showAdded ? (
             <>
-              <Check size={16} />
-              <span className="text-sm">Hinzugefügt!</span>
+              <Check size={14} className="sm:w-4 sm:h-4" />
+              <span className="text-xs sm:text-sm">Hinzugefügt!</span>
             </>
           ) : (
             <>
-              <ShoppingCart size={16} />
-              <span className="text-sm">In den Warenkorb</span>
+              <ShoppingCart size={14} className="sm:w-4 sm:h-4" />
+              <span className="text-xs sm:text-sm hidden xs:inline">Warenkorb</span>
+              <span className="text-xs sm:text-sm xs:hidden">+</span>
             </>
           )}
         </button>

@@ -81,11 +81,11 @@ const ProductDetailPage = () => {
         <span>Zurück</span>
       </button>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
         {/* Product Image */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           <div 
-            className={`relative bg-white rounded-2xl p-8 border border-gray-100 ${isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}
+            className={`relative bg-white rounded-xl sm:rounded-2xl p-4 sm:p-8 border border-gray-100 ${isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}
             onClick={() => setIsZoomed(!isZoomed)}
           >
             {/* Tags */}
@@ -126,7 +126,7 @@ const ProductDetailPage = () => {
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-64 md:h-80 object-contain"
+                className="w-full h-48 sm:h-64 md:h-80 object-contain"
                 onError={(e) => {
                   e.target.src = 'https://via.placeholder.com/400?text=Produkt';
                 }}
@@ -142,14 +142,14 @@ const ProductDetailPage = () => {
         </div>
 
         {/* Product Info */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {/* Brand */}
           {product.brand && (
-            <p className="text-sm text-rewe-red font-medium">{product.brand}</p>
+            <p className="text-xs sm:text-sm text-rewe-red font-medium">{product.brand}</p>
           )}
 
           {/* Name */}
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
             {product.name}
           </h1>
 
@@ -167,13 +167,13 @@ const ProductDetailPage = () => {
           <ScoreDisplay product={product} />
 
           {/* Price Section */}
-          <div className="bg-gray-50 rounded-xl p-4 space-y-3">
-            <div className="flex items-baseline gap-3">
-              <span className="text-3xl font-bold text-gray-900">
+          <div className="bg-gray-50 rounded-lg sm:rounded-xl p-3 sm:p-4 space-y-2 sm:space-y-3">
+            <div className="flex items-baseline gap-2 sm:gap-3">
+              <span className="text-2xl sm:text-3xl font-bold text-gray-900">
                 {product.price.toFixed(2)} €
               </span>
               {product.basePrice && (
-                <span className="text-sm text-gray-500">
+                <span className="text-xs sm:text-sm text-gray-500">
                   ({product.basePrice})
                 </span>
               )}
@@ -184,25 +184,25 @@ const ProductDetailPage = () => {
           </div>
 
           {/* Quantity & Add to Cart */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <div className="flex items-center border border-gray-200 rounded-lg">
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="p-3 hover:bg-gray-50 transition-colors"
+                className="p-2 sm:p-3 hover:bg-gray-50 transition-colors active:bg-gray-100"
               >
-                <Minus size={18} />
+                <Minus size={16} className="sm:w-[18px] sm:h-[18px]" />
               </button>
-              <span className="w-12 text-center font-medium">{quantity}</span>
+              <span className="w-8 sm:w-12 text-center font-medium text-sm sm:text-base">{quantity}</span>
               <button
                 onClick={() => setQuantity(quantity + 1)}
-                className="p-3 hover:bg-gray-50 transition-colors"
+                className="p-2 sm:p-3 hover:bg-gray-50 transition-colors active:bg-gray-100"
               >
-                <Plus size={18} />
+                <Plus size={16} className="sm:w-[18px] sm:h-[18px]" />
               </button>
             </div>
             <button
               onClick={handleAddToCart}
-              className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-medium transition-all duration-300 ${
+              className={`flex-1 flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base ${
                 showAdded 
                   ? 'bg-green-500 text-white' 
                   : 'btn-primary'
@@ -210,12 +210,12 @@ const ProductDetailPage = () => {
             >
               {showAdded ? (
                 <>
-                  <Check size={20} />
+                  <Check size={18} className="sm:w-5 sm:h-5" />
                   <span>Hinzugefügt!</span>
                 </>
               ) : (
                 <>
-                  <ShoppingCart size={20} />
+                  <ShoppingCart size={18} className="sm:w-5 sm:h-5" />
                   <span>In den Warenkorb</span>
                 </>
               )}
@@ -275,9 +275,9 @@ const ProductDetailPage = () => {
 
       {/* Similar Products */}
       {similarProducts.length > 0 && (
-        <div className="mt-12">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">Ähnliche Produkte</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="mt-8 sm:mt-12">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Ähnliche Produkte</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
             {similarProducts.map(p => (
               <ProductCard key={p.id} product={p} />
             ))}
