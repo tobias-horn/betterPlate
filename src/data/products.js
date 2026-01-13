@@ -2,9 +2,10 @@
 
 // Base URL for assets (matches vite.config.js base)
 const BASE_URL = import.meta.env.BASE_URL || '/';
+const ASSET_BASE = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`;
 
 // Helper to get image path with correct base
-export const getImagePath = (id) => `${BASE_URL}images/products/product-${id}.png`;
+export const getImagePath = (id) => `${ASSET_BASE}images/products/product-${id}.png`;
 
 // Backup of original REWE image URLs (in case needed)
 export const originalImageUrls = {
