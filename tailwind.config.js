@@ -10,8 +10,11 @@ export default {
         'xs': '375px', // Extra small devices (iPhone SE, etc.)
       },
       colors: {
-        'rewe-red': '#cc071e',
-        'rewe-red-dark': '#a30518',
+        'brand': '#004d40',
+        'brand-dark': '#00352c',
+        'brand-light': '#00695c',
+        'rewe-red': '#004d40',
+        'rewe-red-dark': '#00352c',
         'bio-green': '#4a7c23',
         'regional-blue': '#2563eb',
         'vegan-lime': '#84cc16',

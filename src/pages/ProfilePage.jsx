@@ -127,15 +127,15 @@ const ProfilePage = () => {
   return (
     <div className="space-y-6">
       {/* Profile Header */}
-      <div className="bg-gradient-to-r from-rewe-red to-red-600 rounded-2xl p-6 text-white">
+      <div className="bg-gradient-to-r from-brand to-brand-light rounded-2xl p-6 text-white">
         <div className="flex items-center gap-4">
           <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-2xl font-bold">
             {user.name.split(' ').map(n => n[0]).join('')}
           </div>
           <div>
             <h1 className="text-xl font-bold">{user.name}</h1>
-            <p className="text-red-100">{user.email}</p>
-            <p className="text-red-200 text-sm">Mitglied seit {user.memberSince}</p>
+            <p className="text-teal-100">{user.email}</p>
+            <p className="text-teal-200 text-sm">Mitglied seit {user.memberSince}</p>
           </div>
         </div>
         
@@ -143,21 +143,21 @@ const ProfilePage = () => {
         <div className="grid grid-cols-4 gap-3 mt-6">
           <div className="bg-white/10 rounded-xl p-3 text-center">
             <p className="text-2xl font-bold">{user.totalOrders}</p>
-            <p className="text-xs text-red-100">Bestellungen</p>
+            <p className="text-xs text-teal-100">Bestellungen</p>
           </div>
           <div className="bg-white/10 rounded-xl p-3 text-center">
             <div className="flex items-center justify-center gap-1">
               <Heart size={16} className="text-pink-300" />
               <span className="text-2xl font-bold">{user.avgHealthScore}</span>
             </div>
-            <p className="text-xs text-red-100">Ø Health</p>
+            <p className="text-xs text-teal-100">Ø Health</p>
           </div>
           <div className="bg-white/10 rounded-xl p-3 text-center">
             <div className="flex items-center justify-center gap-1">
               <Leaf size={16} className="text-green-300" />
               <span className="text-2xl font-bold">{user.avgImpactScore}</span>
             </div>
-            <p className="text-xs text-red-100">Ø Impact</p>
+            <p className="text-xs text-teal-100">Ø Impact</p>
           </div>
           <div className="bg-white/10 rounded-xl p-3 text-center">
             <div className="flex items-center justify-center gap-1">

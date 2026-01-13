@@ -113,11 +113,11 @@ const ProductsPage = () => {
   return (
     <div className="space-y-6">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-rewe-red to-red-600 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-white">
+      <div className="bg-gradient-to-r from-brand to-brand-light rounded-xl sm:rounded-2xl p-4 sm:p-6 text-white">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1.5 sm:mb-2">
           Willkommen bei BetterPlate 🛒
         </h1>
-        <p className="text-red-100 text-sm sm:text-base mb-3 sm:mb-4">
+        <p className="text-teal-100 text-sm sm:text-base mb-3 sm:mb-4">
           Nachhaltige Produkte mit transparenten True Prices
         </p>
         
@@ -129,13 +129,13 @@ const ProductsPage = () => {
                 <Sparkles size={16} className="text-yellow-300" />
                 <span className="font-semibold text-sm sm:text-base">Was ist der True Price?</span>
               </div>
-              <p className="text-xs sm:text-sm text-red-100">
+              <p className="text-xs sm:text-sm text-teal-100">
                 Entdecke die wahren Kosten deiner Produkte – inklusive Umwelt- und Sozialauswirkungen.
               </p>
             </div>
             <Link 
               to="/info"
-              className="flex items-center justify-center gap-2 bg-white text-rewe-red font-semibold px-4 py-2.5 rounded-lg hover:bg-red-50 transition-colors text-sm sm:text-base whitespace-nowrap active:scale-95"
+              className="flex items-center justify-center gap-2 bg-white text-brand font-semibold px-4 py-2.5 rounded-lg hover:bg-teal-50 transition-colors text-sm sm:text-base whitespace-nowrap active:scale-95"
             >
               <span>Mehr erfahren</span>
               <ArrowRight size={16} />
