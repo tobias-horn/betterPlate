@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { Search } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Search, ArrowRight, Sparkles } from 'lucide-react';
 import { products, categories, findAlternatives } from '../data/products';
 import ProductCard from '../components/ProductCard';
 import SearchBar from '../components/SearchBar';
@@ -119,10 +120,27 @@ const ProductsPage = () => {
         <p className="text-red-100 text-sm sm:text-base mb-3 sm:mb-4">
           Nachhaltige Produkte mit transparenten True Prices
         </p>
-        <div className="bg-white/20 rounded-lg p-2.5 sm:p-3 backdrop-blur-sm">
-          <p className="text-xs sm:text-sm">
-            🌱 <strong>True Price:</strong> Zeigt die wahren Kosten inkl. Umweltauswirkungen
-          </p>
+        
+        {/* True Price CTA Card */}
+        <div className="bg-white/15 rounded-xl p-3 sm:p-4 backdrop-blur-sm border border-white/20">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-1">
+                <Sparkles size={16} className="text-yellow-300" />
+                <span className="font-semibold text-sm sm:text-base">Was ist der True Price?</span>
+              </div>
+              <p className="text-xs sm:text-sm text-red-100">
+                Entdecke die wahren Kosten deiner Produkte – inklusive Umwelt- und Sozialauswirkungen.
+              </p>
+            </div>
+            <Link 
+              to="/info"
+              className="flex items-center justify-center gap-2 bg-white text-rewe-red font-semibold px-4 py-2.5 rounded-lg hover:bg-red-50 transition-colors text-sm sm:text-base whitespace-nowrap active:scale-95"
+            >
+              <span>Mehr erfahren</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </div>
 
