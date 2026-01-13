@@ -1,4 +1,29 @@
 // Product data with true-price classification and detailed breakdowns
+
+// Backup of original REWE image URLs (in case needed)
+export const originalImageUrls = {
+  1: "https://img.rewe-static.de/8041311/30734219_digital-image.png",
+  2: "https://img.rewe-static.de/7547310/42682862_digital-image.png",
+  3: "https://img.rewe-static.de/7905813/33782965_digital-image.png",
+  4: "https://img.rewe-static.de/7055914/27084991_digital-image.png",
+  5: "https://img.rewe-static.de/0468783/23949880_digital-image.png",
+  6: "https://img.rewe-static.de/1045111/21288882_digital-image.png",
+  7: "https://img.rewe-static.de/0483010/7361800_digital-image.png",
+  8: "https://img.rewe-static.de/2625775/25598665_digital-image.png",
+  9: "https://img.rewe-static.de/1007433/21403678_digital-image.png",
+  10: "https://img.rewe-static.de/1907470/23271236_digital-image.png",
+  11: "https://img.rewe-static.de/7978794/32402863_digital-image.png",
+  12: "https://img.rewe-static.de/8728614/37096973_digital-image.png",
+  13: "https://img.rewe-static.de/8139884/31571240_digital-image.png",
+  14: "https://img.rewe-static.de/4530594/1092510_digital-image.png",
+  15: "https://img.rewe-static.de/8691063/36533483_digital-image.png",
+  16: "https://img.rewe-static.de/8655330/33088878_digital-image.png",
+  17: "https://img.rewe-static.de/2565945/24710843_digital-image.png",
+  18: "https://img.rewe-static.de/1235745/23055526_digital-image.png",
+  19: "https://img.rewe-static.de/0145497/12672220_digital-image.png",
+  20: "https://img.rewe-static.de/8677300/33788982_digital-image.png"
+};
+
 export const products = [
   // LOW TRUE-PRICE PRODUCTS (Sustainable choices)
   {
@@ -22,7 +47,7 @@ export const products = [
     description: "Organic oats; gluten-free; Nutri-Score A.",
     longDescription: "Zarte Bio-Haferflocken aus kontrolliert biologischem Anbau. Glutenfrei produziert und ideal für ein gesundes Frühstück. Reich an Ballaststoffen und komplexen Kohlenhydraten für langanhaltende Energie.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/8041311/30734219_digital-image.png",
+    image: "/images/products/product-1.png",
     stock: 50
   },
   {
@@ -46,7 +71,7 @@ export const products = [
     description: "Organic red lentils; Nutri-Score A; good for plant-based diets.",
     longDescription: "Rote Bio-Linsen aus biologischem Anbau. Schnell kochend und vielseitig verwendbar für Suppen, Currys und Dals. Hervorragende pflanzliche Proteinquelle.",
     origin: "Türkei",
-    image: "https://img.rewe-static.de/7547310/42682862_digital-image.png",
+    image: "/images/products/product-2.png",
     stock: 75
   },
   {
@@ -70,7 +95,7 @@ export const products = [
     description: "Organic, vegan tofu; 'Bio' and 'Vegan' badges; low externalities.",
     longDescription: "Naturbelassener Bio-Tofu aus europäischen Sojabohnen. Vielseitig einsetzbar zum Braten, Grillen oder Marinieren. Hoher Proteingehalt für eine ausgewogene pflanzliche Ernährung.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/7905813/33782965_digital-image.png",
+    image: "/images/products/product-3.png",
     stock: 30
   },
   {
@@ -94,7 +119,7 @@ export const products = [
     description: "Organic chickpeas in a small glass jar; good source of plant protein.",
     longDescription: "Bio-Kichererbsen im praktischen Glas. Bereits gekocht und verzehrfertig. Ideal für Salate, Hummus oder als Beilage. Reich an pflanzlichem Eiweiß und Ballaststoffen.",
     origin: "Italien",
-    image: "https://img.rewe-static.de/7055914/27084991_digital-image.png",
+    image: "/images/products/product-4.png",
     stock: 100
   },
   {
@@ -118,7 +143,7 @@ export const products = [
     description: "Regional, organic potatoes; substitution for 2.5 kg pack; low true price.",
     longDescription: "Festkochende Bio-Kartoffeln aus regionalem Anbau. Perfekt für Bratkartoffeln, Kartoffelsalat und als Beilage. Kurze Transportwege garantieren Frische und schonen die Umwelt.",
     origin: "Bayern, Deutschland",
-    image: "https://img.rewe-static.de/0468783/23949880_digital-image.png",
+    image: "/images/products/product-5.png",
     stock: 40
   },
   {
@@ -142,7 +167,7 @@ export const products = [
     description: "Generic carrots; low environmental impact and rich in vitamin A.",
     longDescription: "Frische Karotten aus deutschem Anbau. Reich an Beta-Carotin und Vitamin A. Vielseitig verwendbar als Rohkost, zum Kochen oder für Säfte.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/1045111/21288882_digital-image.png",
+    image: "/images/products/product-6.png",
     stock: 60
   },
   {
@@ -166,7 +191,7 @@ export const products = [
     description: "Carrots sold with greens; fresh and regional; no base price given.",
     longDescription: "Frische Bundmöhren mit Grün. Das Karottengrün kann für Pesto oder Suppen verwendet werden. Besonders frisch und aromatisch aus regionalem Anbau.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/0483010/7361800_digital-image.png",
+    image: "/images/products/product-7.png",
     stock: 25
   },
   {
@@ -190,7 +215,7 @@ export const products = [
     description: "Snack-size baby carrots; convenient healthy snack.",
     longDescription: "Praktische Mini-Karotten für unterwegs. Bereits gewaschen und verzehrfertig. Der ideale gesunde Snack für Schule, Büro oder Sport.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/2625775/25598665_digital-image.png",
+    image: "/images/products/product-8.png",
     stock: 45
   },
   {
@@ -214,7 +239,7 @@ export const products = [
     description: "Green vegetable with low true price.",
     longDescription: "Frischer Broccoli, reich an Vitaminen und Mineralstoffen. Besonders hoher Gehalt an Vitamin C und Folsäure. Ideal zum Dämpfen, Braten oder als Rohkost.",
     origin: "Deutschland/Spanien",
-    image: "https://img.rewe-static.de/1007433/21403678_digital-image.png",
+    image: "/images/products/product-9.png",
     stock: 35
   },
   {
@@ -238,7 +263,7 @@ export const products = [
     description: "Local apple variety; fresh fruit with low externalities.",
     longDescription: "Pinova-Äpfel aus regionalem Anbau. Süß-säuerlicher Geschmack, knackig und saftig. Ideal als Snack oder zum Backen. Kurze Transportwege für maximale Frische.",
     origin: "Bodensee, Deutschland",
-    image: "https://img.rewe-static.de/1907470/23271236_digital-image.png",
+    image: "/images/products/product-10.png",
     stock: 55
   },
 
@@ -264,7 +289,7 @@ export const products = [
     description: "Conventional beef mince; animal product with high true price due to emissions.",
     longDescription: "Frisches Rinderhackfleisch aus kontrollierter Haltung. Vielseitig verwendbar für Bolognese, Burger oder Hackbraten. Der wahre Preis berücksichtigt die Umweltauswirkungen der Rindfleischproduktion.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/7978794/32402863_digital-image.png",
+    image: "/images/products/product-11.png",
     stock: 20
   },
   {
@@ -288,7 +313,7 @@ export const products = [
     description: "Beef filet steak; premium cut; high externalities.",
     longDescription: "Premium Rinderfilet, der zarteste Teil vom Rind. Perfekt zum Kurzbraten. Der wahre Preis reflektiert die hohen Umweltkosten der Rindfleischproduktion inkl. Methanemissionen und Landnutzung.",
     origin: "Argentinien",
-    image: "https://img.rewe-static.de/8728614/37096973_digital-image.png",
+    image: "/images/products/product-12.png",
     stock: 15
   },
   {
@@ -312,7 +337,7 @@ export const products = [
     description: "Lamb chops; high land-use and methane emissions.",
     longDescription: "Zarte Lammkoteletts, ideal zum Grillen oder Braten. Die Schafhaltung verursacht hohe Methanemissionen und benötigt viel Weideland, was sich im wahren Preis widerspiegelt.",
     origin: "Neuseeland",
-    image: "https://img.rewe-static.de/8139884/31571240_digital-image.png",
+    image: "/images/products/product-13.png",
     stock: 12
   },
   {
@@ -336,7 +361,7 @@ export const products = [
     description: "Standard butter; dairy product with moderate externalities.",
     longDescription: "Deutsche Markenbutter aus Kuhmilch. Der wahre Preis berücksichtigt die Umweltauswirkungen der Milchwirtschaft, einschließlich Methanemissionen und Wasserverbrauch.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/4530594/1092510_digital-image.png",
+    image: "/images/products/product-14.png",
     stock: 80
   },
   {
@@ -360,7 +385,7 @@ export const products = [
     description: "Hard Italian cheese; long maturation; animal product.",
     longDescription: "Original Parmigiano Reggiano aus Italien, mindestens 24 Monate gereift. Intensiver, würziger Geschmack. Die lange Reifezeit und Milchproduktion spiegeln sich im wahren Preis wider.",
     origin: "Italien",
-    image: "https://img.rewe-static.de/8691063/36533483_digital-image.png",
+    image: "/images/products/product-15.png",
     stock: 25
   },
   {
@@ -384,7 +409,7 @@ export const products = [
     description: "Organic salmon; high true price because of aquaculture impacts but better than conventional.",
     longDescription: "Bio-Lachsfilet aus nachhaltiger Aquakultur. Reich an Omega-3-Fettsäuren. Obwohl bio-zertifiziert, hat Lachs durch die Aquakultur einen erhöhten ökologischen Fußabdruck.",
     origin: "Norwegen",
-    image: "https://img.rewe-static.de/8655330/33088878_digital-image.png",
+    image: "/images/products/product-16.png",
     stock: 18
   },
   {
@@ -408,7 +433,7 @@ export const products = [
     description: "Prawns/shrimp; fishing/aquaculture externalities; high true price.",
     longDescription: "King Prawns, tiefgefroren. Garnelenzucht kann zur Zerstörung von Mangrovenwäldern führen und hat hohe Umweltauswirkungen, die im wahren Preis berücksichtigt werden.",
     origin: "Vietnam",
-    image: "https://img.rewe-static.de/2565945/24710843_digital-image.png",
+    image: "/images/products/product-17.png",
     stock: 22
   },
   {
@@ -432,7 +457,7 @@ export const products = [
     description: "Whole coffee beans; look for fair-trade or organic certification.",
     longDescription: "Ganze Kaffeebohnen für volles Aroma. Kaffeeanbau kann zu Entwaldung und sozialen Problemen führen. Achten Sie auf Fair-Trade oder Bio-Zertifizierung für nachhaltigeren Genuss.",
     origin: "Kolumbien/Brasilien",
-    image: "https://img.rewe-static.de/1235745/23055526_digital-image.png",
+    image: "/images/products/product-18.png",
     stock: 40
   },
   {
@@ -456,7 +481,7 @@ export const products = [
     description: "Dark chocolate bar; fair-trade reduces social externalities but cocoa has high footprint.",
     longDescription: "Dunkle Schokolade mit 70% Kakaoanteil aus fairem Handel. Fair Trade sorgt für bessere Arbeitsbedingungen, der Kakaoanbau hat jedoch weiterhin ökologische Auswirkungen.",
     origin: "Ghana",
-    image: "https://img.rewe-static.de/0145497/12672220_digital-image.png",
+    image: "/images/products/product-19.png",
     stock: 60
   },
   {
@@ -480,7 +505,7 @@ export const products = [
     description: "Free-range eggs; animal welfare better than caged eggs but still high true price.",
     longDescription: "Freilandeier von glücklichen Hühnern. Bessere Tierhaltung als bei Käfig- oder Bodenhaltung, aber die Eierproduktion hat weiterhin Umweltauswirkungen durch Futterproduktion und Emissionen.",
     origin: "Deutschland",
-    image: "https://img.rewe-static.de/8677300/33788982_digital-image.png",
+    image: "/images/products/product-20.png",
     stock: 50
   }
 ];
