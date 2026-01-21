@@ -12,6 +12,11 @@
   <em>A grocery delivery platform that reveals the true cost of food and empowers consumers to make healthier, more sustainable choices — while being rewarded for it.</em>
 </p>
 
+<p align="center">
+  <strong>⚠️ This is a concept prototype, not a live product.</strong><br />
+  Developed as part of the <a href="https://www.unternehmertum.de/">UnternehmerTUM</a> Innovation Sprint program.
+</p>
+
 ---
 
 ## 🌍 The Problem We're Solving
@@ -50,7 +55,7 @@ Every product on BetterPlate displays two prices:
 - **True Price**: The actual cost including environmental and social externalities
 
 <p align="center">
-  <img src="docs/images/productView.png" alt="Product View with True Price Breakdown" width="100%" />
+  <img src="docs/images/howItWorks.png" alt="How It Works - True Price Display" width="100%" />
 </p>
 
 The **True Price Gap** is broken down into four categories:
@@ -74,7 +79,7 @@ Based on nutritional value, Nutri-Score, and ingredient quality. Higher scores m
 Measures environmental and social sustainability. Higher scores mean better choices for the planet and communities.
 
 <p align="center">
-  <img src="docs/images/howItWorks.png" alt="How BetterPlate Works" width="100%" />
+  <img src="docs/images/productView.png" alt="Product Detail View with Scores" width="100%" />
 </p>
 
 ---
@@ -210,32 +215,6 @@ npm run dev
 - **Routing**: React Router v6
 - **Icons**: Lucide React
 - **State Management**: React Context API
-
----
-
-## 🤝 Contributing
-
-We believe in open collaboration. Whether you're a developer, designer, sustainability expert, or just passionate about changing the food system — we'd love your input.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-- The True Price Foundation for pioneering True Cost Accounting
-- All the researchers working on sustainable food systems
-- The open-source community for amazing tools and libraries
 
 ---
 
